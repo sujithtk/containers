@@ -1,6 +1,6 @@
 version: "3.9"
 services:
-  web:
+  squid:
     image: "sujithtk/squid:latest"
     hostname: squidserver
     network_mode: host
@@ -16,5 +16,11 @@ services:
       - type: bind
         source: /home/itdesk/containers/squid/squidusersdb
         target: /squidusersdb
+  apache:
+    image: sujithtk/apache-sarg-v1
+    hostname: apache-sarg
+    container_name: sarg
+    restart: unless-stopped
+    volumes:
 volumes:
   squidlogs:
