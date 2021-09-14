@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  web:
+    image: "sujithtk/squid:latest"
+    hostname: squidserver
+    network_mode: host
+    container_name: squidproxy
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: squidlogs
+        target: /var/log/squid
+      - type: bind
+        source: /home/itdesk/containers/squid/conf
+        target: /etc/squid
+      - type: bind
+        source: /home/itdesk/containers/squid/squidusersdb
+        target: /squidusersdb
+volumes:
+  squidlogs:
