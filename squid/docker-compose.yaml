@@ -24,9 +24,9 @@ services:
     network_mode: host
     volumes:
       - type: volume
-        source: dockercompose_squidlogs
+        source: squidlogs
         target: /var/log/squid/
-      - type:
+      - type: volume
         source: sarg-reports
         target: /var/www/html/sarg-reports/
 
