@@ -21,6 +21,15 @@ services:
     hostname: apache-sarg
     container_name: sarg
     restart: unless-stopped
+    network_mode: host
     volumes:
+      - type: volume
+        source: dockercompose_squidlogs
+        target: /var/log/squid/
+      - type:
+        source: sarg-reports
+        target: /var/www/html/sarg-reports/
+
 volumes:
   squidlogs:
+  sarg-reports:
