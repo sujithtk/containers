@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  mssql:
+    image: sujithtk/epush-mssql
+    container_name: sql
+    hostname: mssqlserver
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: epush_mssql_db
+        target: /var/opt/mssql
+      - type: bind
+        source: /epushdbbkp/
+        target: /epushdbbkp/
+    environment:
+        ACCEPT_EULA: Y
+        SA_PASSWORD: sa@12345
+        MSSQL_PID: Express
+    ports:
+      - "1433:1433"
+  tomcat:
+    image: sujithtk/epush-mssql-tomcat-v1
+    container_name: tom8
+    hostname: tomcatserver
+    restart: unless-stopped
+    ports:
+      - "82:82"
+
+
+volumes:
+  epush_mssql_db:

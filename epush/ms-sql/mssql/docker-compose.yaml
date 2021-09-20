@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  mssql:
+    image: sujithtk/epush-mssql
+    container_name: sql
+    hostname: mssqlserver
+    volumes:
+      - type: volume
+        source: epush_mssql_db
+        target: /var/opt/mssql
+    environment:
+        ACCEPT_EULA: Y
+        SA_PASSWORD: sa@12345
+        MSSQL_PID: Express
+    ports:
+      - "1433:1433"
+
+volumes:
+  epush_mssql_db:

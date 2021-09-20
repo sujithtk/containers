@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+   mysql:
+     image: mysql:5.7
+     hostname: mysql
+     container_name: mysql
+     restart: unless-stopped
+     network_mode: host
+     volumes:
+      - epushdb:/var/lib/mysql
+     environment:
+       MYSQL_ROOT_PASSWORD: root
+
+   tomcat:
+     image: sujithtk/epush-tomcat
+     hostname: tomcat
+     container_name: tomcat
+     network_mode: host
+     restart: unless-stopped
+
+volumes:
+  epushdb:
