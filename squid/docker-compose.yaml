@@ -5,7 +5,7 @@ services:
     hostname: squidserver
     network_mode: host
     container_name: squidproxy
-    restart: unless-stopped
+    restart: always
     volumes:
       - type: volume
         source: squidlogs
@@ -20,7 +20,7 @@ services:
     image: sujithtk/apache-sarg-v1
     hostname: apache-sarg
     container_name: sarg
-    restart: unless-stopped
+    restart: always
     network_mode: host
     volumes:
       - type: volume
